@@ -17,5 +17,15 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         {
             return _context.Announcements;
         }
+
+        public void Add(AnnouncementModel model)
+        {
+            model.IdAnnouncement = Guid.NewGuid();
+            _context.Announcements.Add(model);
+            _context.SaveChanges();
+        }
+
+       
+
     }
 }
