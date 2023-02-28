@@ -1,13 +1,22 @@
 using MyFirstMVCAppIordacheCatalin.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using MyFirstMVCAppIordacheCatalin.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<ProgrammingClubDataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"))
-);
+builder.Services.AddDbContext<ProgrammingClubDataContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+
+builder.Services.AddTransient<ProgrammingClubDataContext, ProgrammingClubDataContext>();
+builder.Services.AddTransient<AnnouncementsRepository, AnnouncementsRepository>();
+builder.Services.AddTransient<CodeSnippetsRepository, CodeSnippetsRepository>();
+builder.Services.AddTransient<MembershipsRepository, MembershipsRepository>();
+builder.Services.AddTransient<MembersRepository, MembersRepository>();
+builder.Services.AddTransient<MembershipTypesRepository, MembershipTypesRepository>();
+
 
 var app = builder.Build();
 

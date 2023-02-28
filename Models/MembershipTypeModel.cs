@@ -2,7 +2,7 @@
 
 namespace MyFirstMVCAppIordacheCatalin.Models
 {
-    public class MembershipType
+    public class MembershipTypeModel
     {
 
         [Key]
