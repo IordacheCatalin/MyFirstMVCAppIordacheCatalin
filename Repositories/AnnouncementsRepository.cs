@@ -7,9 +7,10 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
     public class AnnouncementsRepository
     {
         private readonly ProgrammingClubDataContext _context;
-        public AnnouncementsRepository(ProgrammingClubDataContext context) { 
-        
-       _context = context;
+        public AnnouncementsRepository(ProgrammingClubDataContext context)
+        {
+
+            _context = context;
 
         }
 
@@ -25,7 +26,17 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
             _context.SaveChanges();
         }
 
-       
+        public AnnouncementModel GetAnnouncementById(Guid id)
+        {
+            AnnouncementModel announcement = _context.Announcements.FirstOrDefault(x => x.IdAnnouncement == id);
+            return announcement;
+        }
+
+        public void Update(AnnouncementModel model)
+        {
+            _context.Announcements.Update(model);
+            _context.SaveChanges();
+        }
 
     }
 }

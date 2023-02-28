@@ -14,5 +14,10 @@ namespace MyFirstMVCAppIordacheCatalin.DataContext
         public DbSet<MembershipModel> Memberships { get; set; }
 
         public DbSet<MembershipTypeModel> MembershipTypes { get; internal set; }
+
+        internal void AnnounUpdate(AnnouncementModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

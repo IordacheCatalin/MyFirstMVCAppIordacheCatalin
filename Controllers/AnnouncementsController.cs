@@ -5,12 +5,12 @@ using MyFirstMVCAppIordacheCatalin.Repositories;
 namespace MyFirstMVCAppIordacheCatalin.Controllers
 {
 
-    
+
     public class AnnouncementsController : Controller
     {
         private readonly AnnouncementsRepository _repository;
 
-            public AnnouncementsController(AnnouncementsRepository repository)
+        public AnnouncementsController(AnnouncementsRepository repository)
         {
             _repository = repository;
         }
@@ -30,12 +30,27 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         {
             AnnouncementModel announcement = new AnnouncementModel();
 
-            TryUpdateModelAsync(announcement); // mapeaza datele din formularul completat de utilizator pe modelul announcements
+            TryUpdateModelAsync(announcement); // maps the data from the form filled in by the user to the announcements model
             _repository.Add(announcement);
 
             return RedirectToAction("Index");
         }
 
+        public IActionResult Edit(Guid id)
+        {
+            AnnouncementModel announcement = _repository.GetAnnouncementById(id);
+            return View("Edit", announcement);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Guid id, IFormCollection collection)
+        {
+            AnnouncementModel announcement = new();
+            TryUpdateModelAsync(announcement);
+            _repository.Update(announcement);
+
+            return RedirectToAction("Index");
+        }
 
     }
 }

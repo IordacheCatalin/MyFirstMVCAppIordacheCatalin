@@ -62,9 +62,9 @@
                 @Html.DisplayFor(modelItem => item.Tags)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.IdAnnouncement  }) |
+                    @Html.ActionLink("Details", "Details", new {  id=item.IdAnnouncement  }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.IdAnnouncement  })
             </td>
         </tr>
 }
