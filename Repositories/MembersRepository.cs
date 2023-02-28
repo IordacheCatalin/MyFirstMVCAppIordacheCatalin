@@ -19,6 +19,25 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         {
             return _context.Members;
         }
+        public void Add(MemberModel model)
+        {
+            model.IDMember = Guid.NewGuid();
+            _context.Members.Add(model);
+            _context.SaveChanges();
+        }
+
+        public MemberModel GetMemberById(Guid id)
+        {
+            MemberModel member = _context.Members.FirstOrDefault(x => x.IDMember == id);
+            return member;
+        }
+
+        public void Update(MemberModel model)
+        {
+            _context.Members.Update(model);
+            _context.SaveChanges();
+        }
+
 
     }
 }
