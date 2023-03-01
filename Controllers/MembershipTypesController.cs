@@ -27,6 +27,7 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         public IActionResult Create(IFormCollection collection)
         {
             MembershipTypeModel membershipType = new MembershipTypeModel();
+            TryUpdateModelAsync(membershipType);
             _repository.Add(membershipType);
 
             return RedirectToAction("Index");

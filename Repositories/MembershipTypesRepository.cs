@@ -22,9 +22,9 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         public void Add(MembershipTypeModel model)
         {
-            model.IDMembershipType= Guid.NewGuid();
+            model.IDMembershipType = Guid.NewGuid();
             _context.MembershipTypes.Add(model);
-            _context.SaveChanges();
+           _context.SaveChanges();
         }
 
         public MembershipTypeModel GetMembershipTypeById(Guid id)
@@ -36,6 +36,7 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         public void Update(MembershipTypeModel model)
         {
             _context.MembershipTypes.Update(model);
+            _context.SaveChanges();
 
         }
     }
