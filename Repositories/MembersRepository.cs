@@ -15,6 +15,7 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         }
 
+        //GET ALL FROM TABLE SECTION 
         public DbSet<MemberModel> GetMembers()
         {
             return _context.Members;
@@ -26,6 +27,7 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
             _context.SaveChanges();
         }
 
+        //GET CODE FOR A CERTAIN ID
         public MemberModel GetMemberById(Guid id)
         {
             MemberModel member = _context.Members.FirstOrDefault(x => x.IDMember == id);

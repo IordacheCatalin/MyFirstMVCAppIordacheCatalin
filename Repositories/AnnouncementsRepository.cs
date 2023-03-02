@@ -14,17 +14,15 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         }
 
+
+        //GET ALL FROM TABLE SECTION 
         public DbSet<AnnouncementModel> GetAnnouncements()
         {
             return _context.Announcements;
         }
 
-        public void Add(AnnouncementModel model)
-        {
-            model.IdAnnouncement = Guid.NewGuid();
-            _context.Announcements.Add(model);
-            _context.SaveChanges();
-        }
+    
+        //GET CODE FOR A CERTAIN ID
 
         public AnnouncementModel GetAnnouncementById(Guid id)
         {
@@ -32,11 +30,23 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
             return announcement;
         }
 
+        //ADD SECTION
+        public void Add(AnnouncementModel model)
+        {
+            model.IdAnnouncement = Guid.NewGuid();
+            _context.Announcements.Add(model);
+            _context.SaveChanges();
+        }
+
+        //UPDATE SECTION
+
         public void Update(AnnouncementModel model)
         {
             _context.Announcements.Update(model);
             _context.SaveChanges();
         }
+
+        //DELETE SECTION
 
         public void Delete(Guid id)
         {

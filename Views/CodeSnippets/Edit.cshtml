@@ -1,0 +1,64 @@
+﻿@model MyFirstMVCAppIordacheCatalin.Models.CodeSnippetModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>CodeSnippetModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdCodeSnippet" class="control-label"></label>
+                <input asp-for="IdCodeSnippet" class="form-control" />
+                <span asp-validation-for="IdCodeSnippet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContentCode" class="control-label"></label>
+                <input asp-for="ContentCode" class="form-control" />
+                <span asp-validation-for="ContentCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IDMember" class="control-label"></label>
+                <input asp-for="IDMember" class="form-control" />
+                <span asp-validation-for="IDMember" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Revision" class="control-label"></label>
+                <input asp-for="Revision" class="form-control" />
+                <span asp-validation-for="Revision" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeAdded" class="control-label"></label>
+                <input asp-for="DateTimeAdded" class="form-control" />
+                <span asp-validation-for="DateTimeAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsPublished" /> @Html.DisplayNameFor(model => model.IsPublished)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

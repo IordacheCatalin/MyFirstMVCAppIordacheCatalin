@@ -14,11 +14,15 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         {
             _repository = repository;
         }
+
+        //VIEW SECTION
         public IActionResult Index()
         {
             var announcements = _repository.GetAnnouncements();
             return View("Index", announcements);
         }
+
+        //CREATE SECTION
 
         public IActionResult Create()
         {
@@ -35,6 +39,8 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
 
             return RedirectToAction("Index");
         }
+
+        //EDIT SECTION
 
         public IActionResult Edit(Guid id)
         {
@@ -53,6 +59,8 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         }
 
 
+        //DELETE SECTION
+
         [HttpGet]
         public IActionResult Delete(Guid id)
         {
@@ -66,6 +74,8 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
             _repository.Delete(id);
             return RedirectToAction("Index");
         }
+
+        //DETAILS SECTION
 
         [HttpGet]
         public IActionResult Details(Guid id)

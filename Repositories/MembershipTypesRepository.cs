@@ -15,6 +15,7 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         }
 
+        //GET ALL FROM TABLE SECTION 
         public DbSet<MembershipTypeModel> GetMembershipTypes()
         {
             return _context.MembershipTypes;
@@ -27,6 +28,7 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
            _context.SaveChanges();
         }
 
+        //GET CODE FOR A CERTAIN ID
         public MembershipTypeModel GetMembershipTypeById(Guid id)
         {
            MembershipTypeModel membershipType = _context.MembershipTypes.FirstOrDefault(x => x.IDMembershipType == id);

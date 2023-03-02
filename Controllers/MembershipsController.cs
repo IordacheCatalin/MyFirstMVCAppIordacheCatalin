@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MyFirstMVCAppIordacheCatalin.Repositories;
+using NuGet.Protocol.Core.Types;
 
 namespace MyFirstMVCAppIordacheCatalin.Controllers
 {
@@ -11,10 +13,16 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         {
             _repository = repository;
         }
+
+        // GET: CodeSnippetsController
+        //VIEW SECTION
         public IActionResult Index()
         {
             var memberships = _repository.GetMemberships();
             return View("Index", memberships);
         }
+
+        
+
     }
 }

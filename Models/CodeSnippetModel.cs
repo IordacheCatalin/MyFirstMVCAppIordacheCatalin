@@ -6,7 +6,7 @@ namespace MyFirstMVCAppIordacheCatalin.Models
     {
 
         [Key]
-        public Guid? IDCodeSnippet { get; set; }
+        public Guid? IdCodeSnippet { get; set; }
 
         public string Title { get; set; }
 
@@ -14,11 +14,12 @@ namespace MyFirstMVCAppIordacheCatalin.Models
 
         public Guid? IDMember { get; set; }
 
+        [Range(0, int.MaxValue, ErrorMessage ="Revision number must be positive!")]
         public int Revision { get; set; }
 
         public DateTime DateTimeAdded { get; set; }
 
-        public int IsPublished { get; set; }
+        public bool IsPublished { get; set; }
 
     }
 }
