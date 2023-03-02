@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyFirstMVCAppIordacheCatalin.DataContext;
 using MyFirstMVCAppIordacheCatalin.Models;
 
@@ -21,25 +20,36 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
             return _context.MembershipTypes;
         }
 
-        public void Add(MembershipTypeModel model)
-        {
-            model.IDMembershipType = Guid.NewGuid();
-            _context.MembershipTypes.Add(model);
-           _context.SaveChanges();
-        }
-
-        //GET CODE FOR A CERTAIN ID
+          //GET CODE FOR A CERTAIN ID
         public MembershipTypeModel GetMembershipTypeById(Guid id)
         {
            MembershipTypeModel membershipType = _context.MembershipTypes.FirstOrDefault(x => x.IDMembershipType == id);
             return membershipType;
         }
 
+        //ADD SECTION
+        public void Add(MembershipTypeModel model)
+        {
+            model.IDMembershipType = Guid.NewGuid();
+            _context.MembershipTypes.Add(model);
+            _context.SaveChanges();
+        }
+
+        //UPDATE SECTION
+
         public void Update(MembershipTypeModel model)
         {
             _context.MembershipTypes.Update(model);
             _context.SaveChanges();
+        }
 
+        //DELETE SECTION
+
+        public void Delete(Guid id)
+        {
+            MembershipTypeModel membershipType = GetMembershipTypeById(id);
+            _context.MembershipTypes.Remove(membershipType);
+            _context.SaveChanges();
         }
     }
 }

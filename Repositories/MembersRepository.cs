@@ -20,12 +20,6 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         {
             return _context.Members;
         }
-        public void Add(MemberModel model)
-        {
-            model.IDMember = Guid.NewGuid();
-            _context.Members.Add(model);
-            _context.SaveChanges();
-        }
 
         //GET CODE FOR A CERTAIN ID
         public MemberModel GetMemberById(Guid id)
@@ -34,9 +28,27 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
             return member;
         }
 
+        //ADD SECTION
+        public void Add(MemberModel model)
+        {
+            model.IDMember = Guid.NewGuid();
+            _context.Members.Add(model);
+            _context.SaveChanges();
+        }
+
+        //UPDATE SECTION
         public void Update(MemberModel model)
         {
             _context.Members.Update(model);
+            _context.SaveChanges();
+        }
+
+        //DELETE SECTION
+
+        public void Delete(Guid id)
+        {
+            MemberModel member = GetMemberById(id);
+            _context.Members.Remove(member);
             _context.SaveChanges();
         }
 

@@ -12,11 +12,14 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         {
             _repository = repository;
         }
+        //VIEW SECTION
         public IActionResult Index()
         {
             var members = _repository.GetMembers();
             return View("Index", members);
         }
+
+        //CREATE SECTION
 
         public IActionResult Create()
         {
@@ -26,28 +29,56 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         [HttpPost]
         public IActionResult Create(IFormCollection collection)
         {
-            MemberModel member = new MemberModel();
+            MemberModel members = new MemberModel();
 
-            TryUpdateModelAsync(member); // maps the data from the form filled in by the user to the announcements model
-            _repository.Add(member);
+            TryUpdateModelAsync(members); // maps the data from the form filled in by the user to the members model
+            _repository.Add(members);
 
             return RedirectToAction("Index");
         }
 
+        //EDIT SECTION
+
         public IActionResult Edit(Guid id)
         {
-            MemberModel member = _repository.GetMemberById(id);
-            return View("Edit", member);
+            MemberModel members = _repository.GetMemberById(id);
+            return View("Edit", members);
         }
 
         [HttpPost]
         public IActionResult Edit(Guid id, IFormCollection collection)
         {
-            MemberModel member = new();
-            TryUpdateModelAsync(member);
-            _repository.Update(member);
+            MemberModel members = new();
+            TryUpdateModelAsync(members);
+            _repository.Update(members);
 
             return RedirectToAction("Index");
+        }
+
+
+        //DELETE SECTION
+
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            MemberModel members = _repository.GetMemberById(id);
+            return View("Delete", members);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Guid id, IFormCollection collection)
+        {
+            _repository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        //DETAILS SECTION
+
+        [HttpGet]
+        public IActionResult Details(Guid id)
+        {
+            MemberModel members = _repository.GetMemberById(id);
+            return View("Details", members);
         }
     }
 }
