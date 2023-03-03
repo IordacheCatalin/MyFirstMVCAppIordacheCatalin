@@ -6,56 +6,82 @@
     <title>@ViewData["Title"] - MyFirstMVCAppIordacheCatalin</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/StructureStyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/TextStyle.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyFirstMVCAppIordacheCatalin.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/be717037ad.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header class="navBarContainer">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark nav-Custom-Style">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyFirstMVCAppIordacheCatalin</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IordacheCatalin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 itemStyle">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fa-solid fa-house"></i>
+                                Home
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                <i class="fa-solid fa-lock"></i>
+                                Privacy
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Announcements" asp-action="Index">Announcements</a>
+                        <li class="nav-item ">
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Announcements" asp-action="Index">
+                                <i class="fa-solid fa-bullhorn"></i>
+                                Announcements
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CodeSnippets" asp-action="Index">Code Spippets</a>
+                        <li class="nav-item ">
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="CodeSnippets" asp-action="Index">
+                                <i class="fa-solid fa-code"></i>
+                                Code Spippets
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Members" asp-action="Index">Members</a>
+                        <li class="nav-item ">
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Members" asp-action="Index">
+                                <i class="fa-solid fa-user"></i>
+                                Members
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Memberships" asp-action="Index">Memberships</a>
+                        <li class="nav-item ">
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Memberships" asp-action="Index">
+                                <i class="fa-solid fa-people-line"></i>
+                                Memberships
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="MembershipTypes" asp-action="Index">Membership Types</a>
+                        <li class="nav-item ">
+                            <a class="nav-link listTextStyle" asp-area="" asp-controller="MembershipTypes" asp-action="Index">
+                                <i class="fa-solid fa-id-card"></i>
+                                Membership Types
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="navBarContainer">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - MyFirstMVCAppIordacheCatalin - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    <div class="navBarContainer" >
+        <footer class="footer nav-Custom-Style " style="padding:0px 12px 0px 12px;">
+            <div class="itemStyle listTextStyle">
+                &copy; 2023 - MyFirstMVCAppIordacheCatalin - <a class="itemStyle listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+    </div>
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
