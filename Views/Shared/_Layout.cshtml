@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/be717037ad.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="align">
     <header class="navBarContainer">
         <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark nav-Custom-Style">
             <div class="container-fluid">
@@ -69,17 +70,26 @@
             </div>
         </nav>
     </header>
-    <div class="navBarContainer">
+
+
+    <div class="navBarContainer container-custom">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <div class="navBarContainer" >
-        <footer class="footer nav-Custom-Style " style="padding:0px 12px 0px 12px;">
-            <div class="itemStyle listTextStyle">
-                &copy; 2023 - MyFirstMVCAppIordacheCatalin - <a class="itemStyle listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+
+    <div class="navBarContainer nav-Custom-Style footer-Custom-Style">
+        
+            <div>
+                <span class="itemStyle listTextStyle"> &copy; 2023 - MyFirstMVCAppIordacheCatalin - </span>
+                
             </div>
-        </footer>
+            <div >
+                <a class="itemStyle listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+      
+    </div>
     </div>
     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

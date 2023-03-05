@@ -13,4 +13,6 @@ html {
     min-height: 100%;
 }
 
-
+body {
+    padding:0px 10px 0px 10px;
+}
