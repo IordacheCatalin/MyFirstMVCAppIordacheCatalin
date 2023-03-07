@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyFirstMVCAppIordacheCatalin.Models;
 using MyFirstMVCAppIordacheCatalin.Repositories;
+using MyFirstMVCAppIordacheCatalin.ViewModels;
 
 namespace MyFirstMVCAppIordacheCatalin.Controllers
 {
     public class MembersController : Controller
     {
-        private readonly MembersRepository _repository;
+        private readonly MembersRepository _membersRepository;
 
         public MembersController(MembersRepository repository)
         {
-            _repository = repository;
+            _membersRepository = repository;
         }
         //VIEW SECTION
         public IActionResult Index()
         {
-            var members = _repository.GetMembers();
+            var members = _membersRepository.GetMembers();
             return View("Index", members);
         }
 
@@ -32,7 +33,7 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
             MemberModel members = new MemberModel();
 
             TryUpdateModelAsync(members); // maps the data from the form filled in by the user to the members model
-            _repository.Add(members);
+            _membersRepository.Add(members);
 
             return RedirectToAction("Index");
         }
@@ -41,7 +42,7 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
 
         public IActionResult Edit(Guid id)
         {
-            MemberModel members = _repository.GetMemberById(id);
+            MemberModel members = _membersRepository.GetMemberById(id);
             return View("Edit", members);
         }
 
@@ -50,7 +51,7 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         {
             MemberModel members = new();
             TryUpdateModelAsync(members);
-            _repository.Update(members);
+            _membersRepository.Update(members);
 
             return RedirectToAction("Index");
         }
@@ -61,14 +62,14 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         [HttpGet]
         public IActionResult Delete(Guid id)
         {
-            MemberModel members = _repository.GetMemberById(id);
+            MemberModel members = _membersRepository.GetMemberById(id);
             return View("Delete", members);
         }
 
         [HttpPost]
         public IActionResult Delete(Guid id, IFormCollection collection)
         {
-            _repository.Delete(id);
+            _membersRepository.Delete(id);
             return RedirectToAction("Index");
         }
 
@@ -77,8 +78,15 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
         [HttpGet]
         public IActionResult Details(Guid id)
         {
-            MemberModel members = _repository.GetMemberById(id);
+            MemberModel members = _membersRepository.GetMemberById(id);
             return View("Details", members);
         }
+
+        public IActionResult DetailsWithCodeSnippets(Guid id)
+        {
+            MemberCodesnippetsViewModel viewModel = _membersRepository.GetMemberCodeSnippets(id);
+            return View("DetailsWithCodeSnippets", viewModel);
+        }
+
     }
 }

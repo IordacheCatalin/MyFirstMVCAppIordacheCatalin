@@ -13,8 +13,8 @@
 </head>
 <body>
     <div class="align">
-    <header class="navBarContainer">
-        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark nav-Custom-Style">
+        <header class="navBarContainer nav-Custom-Style">
+        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark ">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IordacheCatalin</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -72,14 +72,14 @@
     </header>
 
 
-    <div class="navBarContainer container-custom">
-        <main role="main" class="pb-3">
+    <div class="mainContainer">
+        <main role="main" >
             @RenderBody()
         </main>
     </div>
 
 
-    <div class="navBarContainer nav-Custom-Style footer-Custom-Style">
+    <div class="navBarContainer footer-Custom-Style">
         
             <div>
                 <span class="itemStyle listTextStyle"> &copy; 2023 - MyFirstMVCAppIordacheCatalin - </span>

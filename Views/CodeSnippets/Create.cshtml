@@ -14,6 +14,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="IDMember" class="control-label" ></label>
+                @* <input asp-for="IDMember" class="form-control" />
+                <span asp-validation-for="IDMember" class="text-danger"></span>*@
+                <span class="text-danger">
+                    @Html.DropDownList("IDMember", new SelectList(ViewBag.data, "IDMember", "Name"),new{ style = "width: 350px;"})
+                </span>
+            </div>
+            <div class="form-group">
                 <label asp-for="IdCodeSnippet" class="control-label"></label>
                 <input asp-for="IdCodeSnippet" class="form-control" readonly/>
                 <span asp-validation-for="IdCodeSnippet" class="text-danger"></span>
@@ -28,11 +36,7 @@
                 <input asp-for="ContentCode" class="form-control" />
                 <span asp-validation-for="ContentCode" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="IDMember" class="control-label"></label>
-                <input asp-for="IDMember" class="form-control" />
-                <span asp-validation-for="IDMember" class="text-danger"></span>
-            </div>
+         
             <div class="form-group">
                 <label asp-for="Revision" class="control-label"></label>
                 <input asp-for="Revision" class="form-control" />

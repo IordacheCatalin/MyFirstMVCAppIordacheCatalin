@@ -9,10 +9,12 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
     public class CodeSnippetsController : Controller
     {
         private readonly CodeSnippetsRepository _repository;
+        private readonly MembersRepository _membersRepository;
 
-        public CodeSnippetsController(CodeSnippetsRepository repository)
+        public CodeSnippetsController(CodeSnippetsRepository repository, MembersRepository membersRepository )
         {
             _repository = repository;
+            _membersRepository = membersRepository;
         }
 
         //VIEW SECTION
@@ -37,6 +39,10 @@ namespace MyFirstMVCAppIordacheCatalin.Controllers
 
         public IActionResult Create()
         {
+            var members = _membersRepository.GetMembers();
+
+            ViewBag.data = members;
+
             return View("Create");
         }
 

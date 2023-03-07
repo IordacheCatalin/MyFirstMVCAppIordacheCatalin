@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyFirstMVCAppIordacheCatalin.DataContext;
 using MyFirstMVCAppIordacheCatalin.Models;
+using MyFirstMVCAppIordacheCatalin.ViewModels;
 
 namespace MyFirstMVCAppIordacheCatalin.Repositories
 {
@@ -52,6 +53,31 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
             _context.SaveChanges();
         }
 
+        //METODA CARE INCARCA DATE (members) IN ViewModel codesnippets
 
+        public MemberCodesnippetsViewModel GetMemberCodeSnippets(Guid memberID)
+
+        {
+            MemberCodesnippetsViewModel memberCodesnippetsViewModel = new MemberCodesnippetsViewModel();
+
+            MemberModel member = _context.Members.FirstOrDefault(x => x.IDMember.Equals(memberID));
+            if (member != null)
+            {
+                memberCodesnippetsViewModel.Name = member.Name;
+
+                memberCodesnippetsViewModel.Positios = member.Position;
+
+                memberCodesnippetsViewModel.Title = member.Title;
+
+                IQueryable<CodeSnippetModel> memberCodeSnippets = _context.CodeSnippets.Where(x => x.IDMember == memberID);
+                foreach (CodeSnippetModel dbCodeSnippet in memberCodeSnippets)
+                {
+                    memberCodesnippetsViewModel.CodeSnippets.Add(dbCodeSnippet);
+                }
+
+            }
+            return memberCodesnippetsViewModel;
+
+        }
     }
 }
