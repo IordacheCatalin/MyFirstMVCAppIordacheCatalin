@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MyFirstMVCAppIordacheCatalin.Models.CodeSnippetModel>
+﻿@model IEnumerable<MyFirstMVCAppIordacheCatalin.Models.MembershipModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,25 +14,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdCodeSnippet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContentCode)
+                @Html.DisplayNameFor(model => model.IDMembership)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IDMember)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Revision)
+                @Html.DisplayNameFor(model => model.IDMembershipType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateTimeAdded)
+                @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IsPublished)
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Level)
             </th>
             <th></th>
         </tr>
@@ -41,30 +38,27 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCodeSnippet)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContentCode)
+                @Html.DisplayFor(modelItem => item.IDMembership)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IDMember)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Revision)
+                @Html.DisplayFor(modelItem => item.IDMembershipType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateTimeAdded)
+                @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsPublished)
+                @Html.DisplayFor(modelItem => item.EndDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.IDMembership  }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.IDMembership  }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.IDMembership  })
             </td>
         </tr>
 }

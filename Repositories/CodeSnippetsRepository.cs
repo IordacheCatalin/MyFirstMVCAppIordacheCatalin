@@ -50,8 +50,12 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         public void DeleteCodeSnippet(Guid id)
         {
             CodeSnippetModel codeSnippet = GetCodeSnippetById(id);
-            _context.CodeSnippets.Remove(codeSnippet);
-            _context.SaveChanges();
+            if(codeSnippet != null)
+            {
+                _context.CodeSnippets.Remove(codeSnippet);
+                _context.SaveChanges();
+            }
+           
         }
     }
 }

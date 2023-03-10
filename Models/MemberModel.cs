@@ -6,7 +6,7 @@ namespace MyFirstMVCAppIordacheCatalin.Models
     {
 
         [Key]
-        public Guid? IDMember { get; set; }
+        public Guid IDMember { get; set; }
 
         public string Name { get; set; }
 

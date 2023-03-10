@@ -48,8 +48,12 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         public void Delete(Guid id)
         {
             MembershipTypeModel membershipType = GetMembershipTypeById(id);
-            _context.MembershipTypes.Remove(membershipType);
-            _context.SaveChanges();
+            if(membershipType != null)
+            {
+                _context.MembershipTypes.Remove(membershipType);
+                _context.SaveChanges();
+            }
+           
         }
     }
 }

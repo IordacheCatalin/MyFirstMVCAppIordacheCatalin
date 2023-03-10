@@ -26,23 +26,23 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         public MembershipModel GetMembershipById(Guid id)
         {
-            MembershipModel membership = _context.Memberships.FirstOrDefault(x => x.IDMembership == id);
-            return membership;
+            MembershipModel membershipModel = _context.Memberships.FirstOrDefault(x => x.IDMembership == id);
+            return membershipModel;
         }
 
         //ADD SECTION
-        public void AddMembership(MembershipModel model)
+        public void AddMembership(MembershipModel membershipModel)
         {
-            model.IDMembership = Guid.NewGuid();
-            _context.Memberships.Add(model);
+            membershipModel.IDMembership = Guid.NewGuid();
+            _context.Memberships.Add(membershipModel);
             _context.SaveChanges();
         }
 
         //UPDATE SECTION
 
-        public void UpdateMembership(MembershipModel model)
+        public void UpdateMembership(MembershipModel membershipModel)
         {
-            _context.Memberships.Update(model);
+            _context.Memberships.Update(membershipModel);
             _context.SaveChanges();
         }
 
@@ -50,9 +50,13 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         public void DeleteMembership(Guid id)
         {
-            MembershipModel membership = GetMembershipById(id);
-            _context.Memberships.Remove(membership);
-            _context.SaveChanges();
+            MembershipModel membershipModel = GetMembershipById(id);
+            if(membershipModel != null)
+            {
+                _context.Memberships.Remove(membershipModel);
+                _context.SaveChanges();
+            }
+            
         }
     }
 }

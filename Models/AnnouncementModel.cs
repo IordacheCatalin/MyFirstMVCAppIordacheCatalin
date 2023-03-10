@@ -5,7 +5,7 @@ namespace MyFirstMVCAppIordacheCatalin.Models
     public class AnnouncementModel
     {
         [Key]
-        public Guid? IdAnnouncement { get; set; }
+        public Guid IdAnnouncement { get; set; }
 
         [Required(ErrorMessage ="Please complete this field!")]
         public DateTime ValidFrom { get; set; }

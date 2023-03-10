@@ -42,8 +42,13 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
         public void Update(AnnouncementModel model)
         {
-            _context.Announcements.Update(model);
-            _context.SaveChanges();
+            AnnouncementModel announcement = GetAnnouncementById(model.IdAnnouncement);
+            if(announcement == null)
+            {
+                _context.Announcements.Update(model);
+                 _context.SaveChanges();
+            }
+            
         }
 
         //DELETE SECTION
@@ -51,8 +56,12 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         public void Delete(Guid id)
         {
             AnnouncementModel announcement = GetAnnouncementById(id);
-            _context.Announcements.Remove(announcement);
-            _context.SaveChanges();
+            if(announcement != null)
+            {
+                _context.Announcements.Remove(announcement);
+                _context.SaveChanges();
+            }
+           
         }
 
     

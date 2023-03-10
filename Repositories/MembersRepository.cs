@@ -49,8 +49,12 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
         public void Delete(Guid id)
         {
             MemberModel member = GetMemberById(id);
-            _context.Members.Remove(member);
-            _context.SaveChanges();
+            if(member != null)
+            {
+                _context.Members.Remove(member);
+                _context.SaveChanges();
+            }
+            
         }
 
         //METODA CARE INCARCA DATE (members) IN ViewModel codesnippets
@@ -69,12 +73,13 @@ namespace MyFirstMVCAppIordacheCatalin.Repositories
 
                 memberCodesnippetsViewModel.Title = member.Title;
 
-                IQueryable<CodeSnippetModel> memberCodeSnippets = _context.CodeSnippets.Where(x => x.IDMember == memberID);
+                IQueryable<CodeSnippetModel> memberCodeSnippets = _context.CodeSnippets.Where(x => x.IDMember == memberID);//IQueruable se foloseste atunci cand avem de facut filtrari custom
                 foreach (CodeSnippetModel dbCodeSnippet in memberCodeSnippets)
                 {
                     memberCodesnippetsViewModel.CodeSnippets.Add(dbCodeSnippet);
                 }
 
+                //memberCodesnippetsViewModel.CodeSnippets = _context.CodeSnippets.Where(x => x.IDMember == memberID).ToList();//Incarca toata baza de date.
             }
             return memberCodesnippetsViewModel;
 

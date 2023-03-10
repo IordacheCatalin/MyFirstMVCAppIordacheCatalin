@@ -12,86 +12,120 @@
     <script src="https://kit.fontawesome.com/be717037ad.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="align">
-        <header class="navBarContainer nav-Custom-Style">
-        <nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark ">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark color nav-Custom-Style">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IordacheCatalin</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1 itemStyle">
-                        <li class="nav-item">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="fa-solid fa-house"></i>
-                                Home
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                <i class="fa-solid fa-lock"></i>
-                                Privacy
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Announcements" asp-action="Index">
-                                <i class="fa-solid fa-bullhorn"></i>
-                                Announcements
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="CodeSnippets" asp-action="Index">
-                                <i class="fa-solid fa-code"></i>
-                                Code Spippets
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Members" asp-action="Index">
-                                <i class="fa-solid fa-user"></i>
-                                Members
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="Memberships" asp-action="Index">
-                                <i class="fa-solid fa-people-line"></i>
-                                Memberships
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link listTextStyle" asp-area="" asp-controller="MembershipTypes" asp-action="Index">
-                                <i class="fa-solid fa-id-card"></i>
-                                Membership Types
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="collapse navbar-collapse" id="nav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Home" asp-action="Index">
+                                    <i class="fa-solid fa-house"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                    <i class="fa-solid fa-lock"></i>
+                                    Privacy
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Announcements" asp-action="Index">
+                                    <i class="fa-solid fa-bullhorn"></i>
+                                    Announcements
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="CodeSnippets" asp-action="Index">
+                                    <i class="fa-solid fa-code"></i>
+                                    Code Spippets
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Members" asp-action="Index">
+                                    <i class="fa-solid fa-user"></i>
+                                    Members
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Memberships" asp-action="Index">
+                                    <i class="fa-solid fa-people-line"></i>
+                                    Memberships
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="MembershipTypes" asp-action="Index">
+                                    <i class="fa-solid fa-id-card"></i>
+                                    Membership Types
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Account" asp-action="Logout">
+
+                                    Logout
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse" id="nav">
+
+                        <ul class="navbar-nav">
+                            <li class="nav-item ">
+                                <a class="nav-link listTextStyle" asp-area="" asp-controller="Account" asp-action="Login">
+                                    Login
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
+
         </nav>
-    </header>
+    
 
 
-    <div class="mainContainer">
-        <main role="main" >
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
 
-    <div class="navBarContainer footer-Custom-Style">
-        
-            <div>
-                <span class="itemStyle listTextStyle"> &copy; 2023 - MyFirstMVCAppIordacheCatalin - </span>
-                
-            </div>
-            <div >
-                <a class="itemStyle listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-      
-    </div>
-    </div>
     
+        <!-- Footer -->
+        <footer class="text-center text-white fixed-bottom" style="background-color: rgb(10, 138, 212);">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: CTA -->
+                <section class="">
+                    <p class="d-flex justify-content-center align-items-center">
+                        <a class="listTextStyle" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </p>
+                </section>
+                <!-- Section: CTA -->
+            </div>
+            <!-- Grid container -->
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+              Iordache Catalin
+                <a class="text-white" href="https://mdbootstrap.com/">Primul MVC</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    
+    </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
